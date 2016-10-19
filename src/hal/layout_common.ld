@@ -6,6 +6,7 @@ __exidx_start          = abort;
 __exidx_end            = abort;
 
 __aeabi_memclr4 = __aeabi_memclr;
+__aeabi_memcpy4 = __aeabi_memcpy;
 
 SECTIONS
 {

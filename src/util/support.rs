@@ -26,6 +26,22 @@ pub extern fn abort() -> ! {
   loop {}
 }
 
+#[doc(hidden)]
+#[no_mangle]
+pub extern fn __aeabi_memcpy(dest: *mut u8, src: *const u8, n: usize) -> *mut u8 {
+  unsafe {
+    let mut i = 0;
+
+    while i < n {
+      *dest.offset(i as isize) = *src.offset(i as isize);
+
+      i += 1;
+    }
+
+    return dest;
+  }
+}
+
 // TODO(bgamari): This is only necessary for exception handling and
 // can be removed when we have this issue resolved.
 #[doc(hidden)]
